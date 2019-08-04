@@ -28,10 +28,26 @@ export class BuffFormComponent implements OnInit {
   }
 
   addBuff(buff: Buff) {
+    // TODO: fix
+    console.log('addBuff');
     this.store.dispatch(new actions.AddBuff(buff));
   }
 
   goToRouteMain() {
     this.router.navigateByUrl('');
+  }
+
+  onSubmit() {
+    const buff = this.buffForm.value;
+    this.addBuff({
+      name: buff.name,
+      atk: buff.atk,
+      dmg: buff.dmg,
+      save: [{value: buff.save, type: '', bonus: ''}],
+      duration: buff.duration,
+      remaining: buff.duration,
+      active: buff.active
+    });
+    this.goToRouteMain();
   }
 }

@@ -13,6 +13,7 @@ export const initialState: State = {
 };
 
 export function reducer(state: State = initialState, action: actions.Actions) {
+    console.log('entered');
     switch (action.type) {
         case actions.ActionTypes.AddBuff:
             return Object.assign({}, state, {
