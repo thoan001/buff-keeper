@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { StatusComponent } from './status/status.component';
+import { BuffFormComponent } from './buff-form/buff-form.component';
 
 
 const routes: Routes = [
-  {path: '', component: AppComponent}
+  {path: '', component: StatusComponent},
+  {path: 'add', component: BuffFormComponent}
 ];
 
 @NgModule({

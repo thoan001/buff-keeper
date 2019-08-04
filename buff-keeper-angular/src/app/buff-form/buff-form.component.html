@@ -1,0 +1,23 @@
+<form [formGroup]="buffForm">
+    <label>
+        Attack:
+        <input type="number" formControlName="atk"/>
+    </label>
+    <label>
+        Damage:
+        <input type="number" formControlName="dmg"/>
+    </label>
+    <label>
+        Save:
+        <input type="number" formControlName="save"/>
+    </label>
+    <label>
+        Duration:
+        <input type="number" formControlName="duration"/>
+    </label>
+    <label>
+        Active?<br>
+        <label></label>
+    </label>
+</form>
+<button (click)="goToRouteMain()">Go&nbsp;Back</button>

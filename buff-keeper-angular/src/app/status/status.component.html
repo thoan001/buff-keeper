@@ -1,1 +1,15 @@
-<p>status works!</p>
+<h3>Your status:</h3>
+<div *ngFor="let buff of status.Buffs">
+    <span>{{buff.name}}</span><br>
+    <p>Attack:&nbsp;{{buff.atk}}&nbsp;Damage:&nbsp;{{buff.dmg}}&nbsp;Duration:&nbsp;{{buff.remaining}}&nbsp;
+        Active?&nbsp;{{buff.active}}&nbsp;
+    </p>
+</div>
+<div>
+    <span *ngIf="status.Buffs.length === 0">
+        <p>No Buffs!</p>
+    </span>
+    <p>Total:&nbsp;<br>
+        <span>Attack:&nbsp;{{total.atk}}&nbsp;</span><span>Damage:&nbsp;{{total.dmg}}</span></p>
+</div>
+<button (click)="goToRouteAdd()">Add&nbsp;Buff</button>
