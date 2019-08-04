@@ -12,7 +12,7 @@ export const initialState: State = {
     Round: 1
 };
 
-export function reducer(state: State = initialState, action: actions.Actions) {
+export function reducer(state = initialState, action: actions.Actions): State {
     console.log('entered');
     switch (action.type) {
         case actions.ActionTypes.AddBuff:
