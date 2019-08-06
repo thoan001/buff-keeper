@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Store, select} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { State } from '../reducers/buff.reducer';
+import * as actions from '../actions/buff.actions';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,8 +26,10 @@ export class StatusComponent implements OnInit {
       let dmgVal = 0;
       if (obs.Buffs.length > 0) {
         for (const buff of obs.Buffs) {
-          atkVal += buff.atk.value;
-          dmgVal = dmgVal + buff.dmg.value;
+          if (buff.active) {
+            atkVal += buff.atk.value;
+            dmgVal = dmgVal + buff.dmg.value;
+          }
         }
         this.total = {
           atk: atkVal,
@@ -39,10 +42,18 @@ export class StatusComponent implements OnInit {
         };
       }
     });
-}
+  }
 
   goToRouteAdd() {
     this.router.navigateByUrl('add');
+  }
+
+  incrementRound() {
+    this.store.dispatch(new actions.IncrementRound());
+  }
+
+  decrementRound() {
+    this.store.dispatch(new actions.DecrementRound());
   }
 
 }

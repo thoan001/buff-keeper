@@ -1,7 +1,7 @@
 <h3>Your status:</h3>
 <div *ngFor="let buff of status.Buffs">
-    <span>{{buff.name}}</span><br>
-    <p>Attack:&nbsp;{{buff.atk.value}}&nbsp;Damage:&nbsp;{{buff.dmg.value}}&nbsp;Duration:&nbsp;{{buff.remaining}}&nbsp;
+    <p>{{buff.name}}<br />
+        Attack:&nbsp;{{buff.atk.value}}&nbsp;Damage:&nbsp;{{buff.dmg.value}}&nbsp;Duration:&nbsp;{{buff.remaining}}&nbsp;
         Active?&nbsp;{{buff.active}}&nbsp;
     </p>
 </div>
@@ -10,6 +10,11 @@
         <p>No Buffs!</p>
     </span>
     <p>Total:&nbsp;<br>
-        <span>Attack:&nbsp;{{total.atk}}&nbsp;</span><span>Damage:&nbsp;{{total.dmg}}</span></p>
+        <span>Attack:&nbsp;{{total.atk}}&nbsp;</span><span>Damage:&nbsp;{{total.dmg}}&nbsp;</span>
+        <span>Current&nbsp;Round:&nbsp;{{status.Round}}</span>
+    </p>
+
 </div>
 <button (click)="goToRouteAdd()">Add&nbsp;Buff</button>
+<button (click)="incrementRound()">Next Round</button>
+<button (click)="decrementRound()">Previous Round</button>

@@ -37,20 +37,26 @@ export function reducer(state = initialState, action: actions.Actions): State {
                 Round: state.Round + 1
             });
         case actions.ActionTypes.DecrementRound:
-            const buffIncreasing = state.Buffs;
-            buffIncreasing.forEach((buff) => {
-                if (buff.active === true) {
-                    if (buff.duration > buff.remaining) {
-                        buff.remaining = buff.remaining + 1;
-                    } else if (buff.duration <= buff.remaining) {
-                        buff.active = false;
+            if (state.Round > 1) {
+                const buffIncreasing = state.Buffs;
+                buffIncreasing.forEach((buff) => {
+                    if (buff.active === true) {
+                        if (buff.duration > buff.remaining) {
+                            buff.remaining = buff.remaining + 1;
+                        } else if (buff.duration <= buff.remaining) {
+                            buff.active = false;
+                        }
                     }
-                }
-            });
-            return Object.assign({}, state, {
-                Buffs: buffIncreasing,
-                Round: state.Round - 1
-            });
+                });
+                return Object.assign({}, state, {
+                    Buffs: buffIncreasing,
+                    Round: state.Round - 1
+                });
+            } else {
+                return state;
+            }
+        case actions.ActionTypes.ToggleEffect:
+            return state;
         default:
             return state;
     }
