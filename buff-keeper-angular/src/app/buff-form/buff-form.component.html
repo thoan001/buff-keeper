@@ -1,35 +1,35 @@
 <form [formGroup]="buffForm" (ngSubmit)="onSubmit()">
     <label>
         Name:
-        <input type="text" formControlName="name"/>
-    </label><br>
+        <input type="text" formControlName="name" />
+    </label><br />
     <label>
         Attack:
-        <input type="number" formControlName="atk"/>
-    </label><br>
+        <input type="number" formControlName="atk" />
+    </label><br />
     <label>
         Damage:
-        <input type="number" formControlName="dmg"/>
-    </label><br>
+        <input type="number" formControlName="dmg" />
+    </label><br />
     <label>
         Save:
-        <input type="number" formControlName="save"/>
-    </label><br>
+        <input type="number" formControlName="saveVal" />
+    </label><br />
     <label>
         Duration:
-        <input type="number" formControlName="duration"/>
-    </label><br>
+        <input type="number" formControlName="duration" />
+    </label><br />
     <label>
-        Active?<br>
+        Active?<br />
         <label>
-            <input type="radio" name="active" formControlName="active" [value]="true"/>
+            <input type="radio" name="active" formControlName="active" [value]="true" />
             Yes
         </label>
         <label>
-            <input type="radio" name="active" formControlName="active" [value]="false"/>
+            <input type="radio" name="active" formControlName="active" [value]="false" />
                 No
         </label>
-    </label><br>
+    </label><br />
     <button type="submit">Submit</button>
 </form>
 <button (click)="goToRouteMain()">Go&nbsp;Back</button>

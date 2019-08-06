@@ -9,22 +9,20 @@ export enum ActionTypes {
 }
 
 export class AddBuff implements Action {
-    type: ActionTypes.AddBuff;
+    readonly type = ActionTypes.AddBuff;
     constructor(public payload: Buff) {}
 }
 
 export class IncrementRound implements Action {
-    type: ActionTypes.IncrementRound;
-    constructor() {}
+    readonly type = ActionTypes.IncrementRound;
 }
 
 export class DecrementRound implements Action {
-    type: ActionTypes.DecrementRound;
-    constructor() {}
+    readonly type = ActionTypes.DecrementRound;
 }
 
 export class ToggleEffect implements Action {
-    type: ActionTypes.ToggleEffect;
+    readonly type = ActionTypes.ToggleEffect;
     constructor(public payload: {id: number}) {}
 }
 

@@ -1,7 +1,7 @@
 <h3>Your status:</h3>
 <div *ngFor="let buff of status.Buffs">
     <span>{{buff.name}}</span><br>
-    <p>Attack:&nbsp;{{buff.atk}}&nbsp;Damage:&nbsp;{{buff.dmg}}&nbsp;Duration:&nbsp;{{buff.remaining}}&nbsp;
+    <p>Attack:&nbsp;{{buff.atk.value}}&nbsp;Damage:&nbsp;{{buff.dmg.value}}&nbsp;Duration:&nbsp;{{buff.remaining}}&nbsp;
         Active?&nbsp;{{buff.active}}&nbsp;
     </p>
 </div>

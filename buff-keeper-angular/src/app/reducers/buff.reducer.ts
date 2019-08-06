@@ -1,4 +1,3 @@
-import { Action, Store, reduceState, ReducerManager } from '@ngrx/store';
 import * as actions from '../actions/buff.actions';
 import { Buff } from '../status/buff';
 
@@ -13,7 +12,6 @@ export const initialState: State = {
 };
 
 export function reducer(state = initialState, action: actions.Actions): State {
-    console.log('entered');
     switch (action.type) {
         case actions.ActionTypes.AddBuff:
             return Object.assign({}, state, {
