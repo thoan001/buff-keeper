@@ -10,6 +10,7 @@ export class Buff {
     }[],
     public duration: number,
     public remaining: number,
+    public roundStarted: number,
     public active: boolean
   ) {}
 }

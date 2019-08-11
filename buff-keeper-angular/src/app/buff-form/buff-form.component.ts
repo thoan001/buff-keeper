@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { State } from '../reducers/buff.reducer';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -28,7 +28,6 @@ export class BuffFormComponent implements OnInit {
   }
 
   addBuff(buff: Buff) {
-    // TODO: fix
     this.store.dispatch(new actions.AddBuff(buff));
   }
 
@@ -38,6 +37,9 @@ export class BuffFormComponent implements OnInit {
 
   onSubmit() {
     const buff = this.buffForm.value;
+    const round$ = this.store.pipe(select('status'), select('Round'));
+    let round: number;
+    round$.subscribe((obs) => round = obs).unsubscribe();
     this.addBuff({
       name: buff.name,
       atk: {value: buff.atk, type: ''},
@@ -45,6 +47,7 @@ export class BuffFormComponent implements OnInit {
       save: [{value: buff.save, category: '', type: ''}],
       duration: buff.duration,
       remaining: buff.duration,
+      roundStarted: round,
       active: buff.active
     });
     this.goToRouteMain();

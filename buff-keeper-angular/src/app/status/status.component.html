@@ -1,9 +1,11 @@
 <h3>Your status:</h3>
-<div *ngFor="let buff of status.Buffs">
+<div *ngFor="let buff of status.Buffs; let i = index">
     <p>{{buff.name}}<br />
         Attack:&nbsp;{{buff.atk.value}}&nbsp;Damage:&nbsp;{{buff.dmg.value}}&nbsp;Duration:&nbsp;{{buff.remaining}}&nbsp;
         Active?&nbsp;{{buff.active}}&nbsp;
     </p>
+    <button type="button" (click)="toggleEffect(i)">Toggle</button>
+    <button type="button" (click)="removeBuff(i)">Remove</button>
 </div>
 <div>
     <span *ngIf="status.Buffs.length === 0">

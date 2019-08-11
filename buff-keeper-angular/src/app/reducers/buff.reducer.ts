@@ -30,6 +30,8 @@ export function reducer(state = initialState, action: actions.Actions): State {
                         buff.remaining = buff.remaining - 1;
                         buff.active = false;
                     }
+                } else if ((buff.active === false) && ((buff.roundStarted - 1) === state.Round)) {
+                    buff.active = true;
                 }
             });
             return Object.assign({}, state, {
@@ -41,11 +43,14 @@ export function reducer(state = initialState, action: actions.Actions): State {
                 const buffIncreasing = state.Buffs;
                 buffIncreasing.forEach((buff) => {
                     if (buff.active === true) {
-                        if (buff.duration > buff.remaining) {
+                        if ((buff.duration > buff.remaining) && ((buff.roundStarted) < state.Round)) {
                             buff.remaining = buff.remaining + 1;
-                        } else if (buff.duration <= buff.remaining) {
+                        } else if ((buff.roundStarted) >= state.Round) {
                             buff.active = false;
                         }
+                    } else if ((buff.remaining === 0) && (state.Round === (buff.roundStarted + buff.duration))) {
+                        buff.active = true;
+                        buff.remaining = buff.remaining + 1;
                     }
                 });
                 return Object.assign({}, state, {
@@ -56,7 +61,23 @@ export function reducer(state = initialState, action: actions.Actions): State {
                 return state;
             }
         case actions.ActionTypes.ToggleEffect:
-            return state;
+            const toggleArray = state.Buffs;
+            if (toggleArray[action.payload.id]) {
+                toggleArray[action.payload.id] = Object.assign({},
+                    toggleArray[action.payload.id],
+                    {active: !toggleArray[action.payload.id].active});
+            }
+            return Object.assign({}, state, {
+                Buffs: toggleArray
+            });
+        case actions.ActionTypes.RemoveBuff:
+            const removeArray = state.Buffs;
+            if (removeArray[action.payload.id]) {
+                removeArray.splice(action.payload.id, 1);
+            }
+            return Object.assign({}, state, {
+                Buffs: removeArray
+            });
         default:
             return state;
     }

@@ -56,4 +56,12 @@ export class StatusComponent implements OnInit {
     this.store.dispatch(new actions.DecrementRound());
   }
 
+  toggleEffect(index: number) {
+    this.store.dispatch(new actions.ToggleEffect({id: index}));
+  }
+
+  removeBuff(index: number) {
+    this.store.dispatch(new actions.RemoveBuff({id: index}));
+  }
+
 }
