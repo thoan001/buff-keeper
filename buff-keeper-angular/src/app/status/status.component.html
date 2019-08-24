@@ -1,22 +1,29 @@
-<h3>Your status:</h3>
-<div *ngFor="let buff of status.Buffs; let i = index">
-    <p>{{buff.name}}<br />
-        Attack:&nbsp;{{buff.atk.value}}&nbsp;Damage:&nbsp;{{buff.dmg.value}}&nbsp;Duration:&nbsp;{{buff.remaining}}&nbsp;
-        Active?&nbsp;{{buff.active}}&nbsp;
-    </p>
-    <button type="button" (click)="toggleEffect(i)">Toggle</button>
-    <button type="button" (click)="removeBuff(i)">Remove</button>
-</div>
-<div>
-    <span *ngIf="status.Buffs.length === 0">
-        <p>No Buffs!</p>
-    </span>
-    <p>Total:&nbsp;<br>
-        <span>Attack:&nbsp;{{total.atk}}&nbsp;</span><span>Damage:&nbsp;{{total.dmg}}&nbsp;</span>
-        <span>Current&nbsp;Round:&nbsp;{{status.Round}}</span>
-    </p>
+<div id="container">
+    <strong>Your status:</strong><br />
+    <div *ngFor="let buff of status.Buffs; let i = index">
+        <br />
+        <span>{{buff.name}}<br />
+            Attack:&nbsp;{{buff.atk.value}}&nbsp;Damage:&nbsp;{{buff.dmg.value}}&nbsp;Duration:&nbsp;{{buff.remaining}}&nbsp;
+            Active?&nbsp;{{buff.active}}&nbsp;
+        </span>
+        <button type="button" class="toggle-button" (click)="toggleEffect(i)">Toggle</button>
+        <button type="button" class="remove-button" (click)="removeBuff(i)">Remove</button>
+        <br />
+    </div><br />
 
+    <div>
+        <span *ngIf="status.Buffs.length === 0">
+            No Buffs!<br /><br />
+        </span>
+    </div>
+
+    <div><strong>Total:&nbsp;</strong><br>
+            <span>Attack:&nbsp;{{total.atk}}&nbsp;</span><span>Damage:&nbsp;{{total.dmg}}&nbsp;</span>
+            <br /><br />
+            <span>Current&nbsp;Round:&nbsp;{{status.Round}}</span>
+    </div>
+
+    <button type="button" class="add-button" (click)="goToRouteAdd()">Add&nbsp;Buff</button>
+    <button type="button" class="round-button" (click)="incrementRound()">Next Round</button>
+    <button type="button" class="round-button" (click)="decrementRound()">Previous Round</button>
 </div>
-<button (click)="goToRouteAdd()">Add&nbsp;Buff</button>
-<button (click)="incrementRound()">Next Round</button>
-<button (click)="decrementRound()">Previous Round</button>
