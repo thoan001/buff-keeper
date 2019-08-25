@@ -2,7 +2,9 @@
     <strong>Your status:</strong><br />
     <div *ngFor="let buff of status.Buffs; let i = index">
         <br />
-        <span>{{buff.name}}<br />
+        <span *ngIf="buff.name === ''">Blank Buff<br /></span>
+        <span *ngIf="buff.name !== ''">{{buff.name}}<br /></span>
+        <span>
             Attack:&nbsp;{{buff.atk.value}}&nbsp;Damage:&nbsp;{{buff.dmg.value}}&nbsp;Duration:&nbsp;{{buff.remaining}}&nbsp;
             Active?&nbsp;{{buff.active}}&nbsp;
         </span>

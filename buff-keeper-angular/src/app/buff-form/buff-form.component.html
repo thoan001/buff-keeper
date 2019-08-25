@@ -1,37 +1,81 @@
-<form [formGroup]="buffForm" (ngSubmit)="onSubmit()">
-    <label>
-        Name:
-        <input type="text" formControlName="name" />
-    </label><br />
-    <label>
-        Attack:
-        <input type="number" formControlName="atk" />
-    </label><br />
-    <label>
-        Damage:
-        <input type="number" formControlName="dmg" />
-    </label><br />
-    <label>
-        Save:
-        <input type="number" formControlName="saveVal" />
-    </label><br />
-    <label>
-        Duration:
-        <input type="number" formControlName="duration" />
-    </label><br />
-    <label>
-        Active?<br />
-        <mat-slide-toggle></mat-slide-toggle>
+<div id="container">
+    <form [formGroup]="buffForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="left-column">
+                <label for="buff-name">
+                    Name:
+                </label>
+            </div>
+            <div class="right-column">
+                <mat-form-field appearance="outline">
+                    <mat-label>Buff Name</mat-label>
+                        <input matInput type="text" id="buff-name" formControlName="name" placeholder="Type a buff name..."/>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="left-column">
+                <label for="attack-field">
+                    Attack:
+                </label>
+            </div>
+            <div class="right-column">
+                <input class="input-field" type="number" id="attack-field" formControlName="atk" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="left-column">
+                <label for="damage-field">
+                    Damage:
+                </label>
+            </div>
+            <div class="right-column">
+                <input class="input-field" type="number" id="damage-field" formControlName="dmg" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="left-column">
+                <label for="save-field">
+                    Save:
+                </label>
+            </div>
+            <div class="right-column">
+                <input class="input-field" type="number" id="save-field" formControlName="saveVal" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="left-column">
+                <label for="duration-field">
+                    Duration:
+                </label>
+            </div>
+            <div class="right-column">
+                <input class="input-field" type="number" id="duration-field" formControlName="duration" />
+            </div>
+        </div>
+
+        <label for="active-toggle">
+            Active?
+        </label><br />
+        <mat-slide-toggle>
+
+        </mat-slide-toggle>
+
         <label>
             <input type="radio" name="active" formControlName="active" [value]="true" />
             Yes
         </label>
         <label>
             <input type="radio" name="active" formControlName="active" [value]="false" />
-                No
+            No
         </label>
-    </label><br />
-    <button mat-button class="submit-button" type="submit">Submit</button>
-    <button mat-button class="back-button" (click)="goToRouteMain()">Go&nbsp;Back</button>
-</form>
+        <br />
 
+        <button mat-button class="submit-button" type="submit">Submit</button>
+        <button mat-button class="back-button" (click)="goToRouteMain()">Go&nbsp;Back</button>
+    </form>
+</div>
