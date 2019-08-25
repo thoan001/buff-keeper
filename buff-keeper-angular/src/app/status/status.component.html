@@ -6,8 +6,8 @@
             Attack:&nbsp;{{buff.atk.value}}&nbsp;Damage:&nbsp;{{buff.dmg.value}}&nbsp;Duration:&nbsp;{{buff.remaining}}&nbsp;
             Active?&nbsp;{{buff.active}}&nbsp;
         </span>
-        <button type="button" class="toggle-button" (click)="toggleEffect(i)">Toggle</button>
-        <button type="button" class="remove-button" (click)="removeBuff(i)">Remove</button>
+        <button mat-button class="toggle-button" (click)="toggleEffect(i)">Toggle</button>
+        <button mat-button class="remove-button" (click)="removeBuff(i)">Remove</button>
         <br />
     </div><br />
 
@@ -20,10 +20,10 @@
     <div><strong>Total:&nbsp;</strong><br>
             <span>Attack:&nbsp;{{total.atk}}&nbsp;</span><span>Damage:&nbsp;{{total.dmg}}&nbsp;</span>
             <br /><br />
-            <span>Current&nbsp;Round:&nbsp;{{status.Round}}</span>
+            <span>Current&nbsp;Round:&nbsp;{{status.Round}}</span><br /><br />
     </div>
 
-    <button type="button" class="add-button" (click)="goToRouteAdd()">Add&nbsp;Buff</button>
-    <button type="button" class="round-button" (click)="incrementRound()">Next Round</button>
-    <button type="button" class="round-button" (click)="decrementRound()">Previous Round</button>
+    <button mat-button class="add-button" (click)="goToRouteAdd()">Add&nbsp;Buff</button>
+    <button mat-button class="round-button" (click)="incrementRound()">Next Round</button>
+    <button mat-button class="round-button" (click)="decrementRound()">Previous Round</button>
 </div>

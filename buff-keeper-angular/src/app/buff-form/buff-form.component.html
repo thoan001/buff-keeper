@@ -21,6 +21,7 @@
     </label><br />
     <label>
         Active?<br />
+        <mat-slide-toggle></mat-slide-toggle>
         <label>
             <input type="radio" name="active" formControlName="active" [value]="true" />
             Yes
@@ -30,6 +31,7 @@
                 No
         </label>
     </label><br />
-    <button type="submit">Submit</button>
+    <button mat-button class="submit-button" type="submit">Submit</button>
+    <button mat-button class="back-button" (click)="goToRouteMain()">Go&nbsp;Back</button>
 </form>
-<button (click)="goToRouteMain()">Go&nbsp;Back</button>
+
