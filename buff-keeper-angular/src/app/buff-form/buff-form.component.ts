@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { State } from '../reducers/buff.reducer';
 import { Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import * as actions from '../actions/buff.actions';
 import { Buff } from '../status/buff';
 
@@ -29,6 +29,14 @@ export class BuffFormComponent implements OnInit {
 
   addBuff(buff: Buff) {
     this.store.dispatch(new actions.AddBuff(buff));
+  }
+
+  decrementValue(formControl: string) {
+    this.buffForm.get(formControl).setValue(this.buffForm.get(formControl).value - 1);
+  }
+
+  incrementValue(formControl: string) {
+    this.buffForm.get(formControl).setValue(this.buffForm.get(formControl).value + 1);
   }
 
   goToRouteMain() {

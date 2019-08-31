@@ -8,24 +8,27 @@
     max-width: 50%;
 }
 
-.submit-button {
-    background-color: lightgreen;
-    border-radius: 4px;
-    border: none;
-    margin: 1px;
-}
-
 .back-button {
     background-color: skyblue;
     border-radius: 4px;
     border: none;
     margin: 1px;
+    float: right;
+}
+
+.submit-button {
+    background-color: lightgreen;
+    border-radius: 4px;
+    border: none;
+    margin: 1px;
+    float: right;
 }
 
 .left-column {
     float: left;
     width: 25%;
-    margin-top: 6px;
+    margin-top: 22px;
+    font-size: 150%;
 }
 
 .right-column {
@@ -42,5 +45,9 @@
 }
 
 .input-field {
-    width: 100%;
+    width: 50%;
+}
+
+.number-button {
+    margin: 10px;
 }

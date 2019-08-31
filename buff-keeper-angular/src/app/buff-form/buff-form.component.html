@@ -7,9 +7,10 @@
                 </label>
             </div>
             <div class="right-column">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="input-field">
                     <mat-label>Buff Name</mat-label>
-                        <input matInput type="text" id="buff-name" formControlName="name" placeholder="Type a buff name..."/>
+                    <input matInput type="text" id="buff-name" formControlName="name"
+                        placeholder="Type a buff name..." />
                 </mat-form-field>
             </div>
         </div>
@@ -21,7 +22,12 @@
                 </label>
             </div>
             <div class="right-column">
-                <input class="input-field" type="number" id="attack-field" formControlName="atk" />
+                <button mat-mini-fab type="button" class="number-button" (click)="decrementValue('atk')">-</button>
+                <mat-form-field appearance="outline" class="input-field">
+                    <mat-label>Attack</mat-label>
+                    <input matInput type="number" id="attack-field" formControlName="atk" />
+                </mat-form-field>
+                <button mat-mini-fab type="button" class="number-button" (click)="incrementValue('atk')">+</button>
             </div>
         </div>
 
@@ -32,7 +38,12 @@
                 </label>
             </div>
             <div class="right-column">
-                <input class="input-field" type="number" id="damage-field" formControlName="dmg" />
+                <button mat-mini-fab type="button" class="number-button" (click)="decrementValue('dmg')">-</button>
+                <mat-form-field appearance="outline" class="input-field">
+                    <mat-label>Damage</mat-label>
+                    <input matInput type="number" id="damage-field" formControlName="dmg" />
+                </mat-form-field>
+                <button mat-mini-fab type="button" class="number-button" (click)="incrementValue('dmg')">+</button>
             </div>
         </div>
 
@@ -43,7 +54,12 @@
                 </label>
             </div>
             <div class="right-column">
-                <input class="input-field" type="number" id="save-field" formControlName="saveVal" />
+                <button mat-mini-fab type="button" class="number-button" (click)="decrementValue('saveVal')">-</button>
+                <mat-form-field appearance="outline" class="input-field">
+                    <mat-label>Save</mat-label>
+                    <input matInput type="number" id="save-field" formControlName="saveVal" />
+                </mat-form-field>
+                <button mat-mini-fab type="button" class="number-button" (click)="incrementValue('saveVal')">+</button>
             </div>
         </div>
 
@@ -54,25 +70,22 @@
                 </label>
             </div>
             <div class="right-column">
-                <input class="input-field" type="number" id="duration-field" formControlName="duration" />
+                <button mat-mini-fab type="button" class="number-button" (click)="decrementValue('duration')">-</button>
+                <mat-form-field appearance="outline" class="input-field">
+                    <mat-label>Duration</mat-label>
+                    <input matInput type="number" id="duration-field" formControlName="duration" />
+                </mat-form-field>
+                <button mat-mini-fab type="button" class="number-button" (click)="incrementValue('duration')">+</button>
             </div>
         </div>
 
-        <label for="active-toggle">
-            Active?
-        </label><br />
-        <mat-slide-toggle>
-
-        </mat-slide-toggle>
-
-        <label>
-            <input type="radio" name="active" formControlName="active" [value]="true" />
-            Yes
-        </label>
-        <label>
-            <input type="radio" name="active" formControlName="active" [value]="false" />
-            No
-        </label>
+        <div class="left-column">
+            <label for="active">
+                Active?
+            </label>
+        
+            <mat-slide-toggle name="active" formControlName="active"></mat-slide-toggle>
+        </div>
         <br />
 
         <button mat-button class="submit-button" type="submit">Submit</button>
