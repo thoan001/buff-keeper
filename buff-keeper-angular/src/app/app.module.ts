@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { BuffFormComponent } from './buff-form/buff-form.component';
     MatSlideToggleModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     StoreModule.forRoot({status: reducer})
   ],
   providers: [],

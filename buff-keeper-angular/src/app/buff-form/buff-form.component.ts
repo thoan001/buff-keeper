@@ -4,7 +4,7 @@ import { State } from '../reducers/buff.reducer';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import * as actions from '../actions/buff.actions';
-import { Buff } from '../status/buff';
+import { Buff, SAVE_CATEGORY, BONUS_TYPE } from '../status/buff';
 
 @Component({
   selector: 'app-buff-form',
@@ -13,11 +13,17 @@ import { Buff } from '../status/buff';
 })
 export class BuffFormComponent implements OnInit {
 
+  SAVE_CATEGORY = SAVE_CATEGORY;
+  BONUS_TYPE = BONUS_TYPE;
+
   buffForm = this.fb.group({
     name: ['', Validators.required],
     atk: [0, Validators.required],
+    atkType: ['None', Validators.required],
     dmg: [0, Validators.required],
+    dmgType: ['None', Validators.required],
     saveVal: [0, Validators.required],
+    saveType: ['None', Validators.required],
     duration: [0, Validators.required],
     active: [true, Validators.required]
   });
@@ -50,9 +56,9 @@ export class BuffFormComponent implements OnInit {
     round$.subscribe((obs) => round = obs).unsubscribe();
     this.addBuff({
       name: buff.name,
-      atk: {value: buff.atk, type: ''},
-      dmg: {value: buff.dmg, type: ''},
-      save: [{value: buff.save, category: '', type: ''}],
+      atk: {value: buff.atk, type: buff.atkType},
+      dmg: {value: buff.dmg, type: buff.dmgType},
+      save: [{value: buff.save, category: '', type: buff.saveType}],
       duration: buff.duration,
       remaining: buff.duration,
       roundStarted: round,

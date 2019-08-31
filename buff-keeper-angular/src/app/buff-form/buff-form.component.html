@@ -28,6 +28,12 @@
                     <input matInput type="number" id="attack-field" formControlName="atk" />
                 </mat-form-field>
                 <button mat-mini-fab type="button" class="number-button" (click)="incrementValue('atk')">+</button>
+                <mat-form-field appearance="standard" class="input-field">
+                    <mat-label>Type</mat-label>
+                    <mat-select formControlName="atkType">
+                        <mat-option *ngFor="let atkbonus of BONUS_TYPE" [value]="atkbonus">{{ atkbonus }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </div>
 
@@ -44,6 +50,12 @@
                     <input matInput type="number" id="damage-field" formControlName="dmg" />
                 </mat-form-field>
                 <button mat-mini-fab type="button" class="number-button" (click)="incrementValue('dmg')">+</button>
+                <mat-form-field appearance="standard" class="input-field">
+                    <mat-label>Type</mat-label>
+                    <mat-select formControlName="dmgType">
+                        <mat-option *ngFor="let dmgbonus of BONUS_TYPE" [value]="dmgbonus">{{ dmgbonus }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </div>
 
@@ -60,6 +72,12 @@
                     <input matInput type="number" id="save-field" formControlName="saveVal" />
                 </mat-form-field>
                 <button mat-mini-fab type="button" class="number-button" (click)="incrementValue('saveVal')">+</button>
+                <mat-form-field appearance="standard" class="input-field">
+                    <mat-label>Type</mat-label>
+                    <mat-select formControlName="saveType">
+                        <mat-option *ngFor="let savebonus of BONUS_TYPE" [value]="savebonus">{{ savebonus }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </div>
 
@@ -83,7 +101,7 @@
             <label for="active">
                 Active?
             </label>
-        
+
             <mat-slide-toggle name="active" formControlName="active"></mat-slide-toggle>
         </div>
         <br />
