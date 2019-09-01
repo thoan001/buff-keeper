@@ -59,8 +59,8 @@ export class BuffFormComponent implements OnInit {
       atk: {value: buff.atk, type: buff.atkType},
       dmg: {value: buff.dmg, type: buff.dmgType},
       save: [{value: buff.save, category: '', type: buff.saveType}],
-      duration: buff.duration,
-      remaining: buff.duration,
+      duration: ((buff.duration < 0) ? 0 : buff.duration),
+      remaining: ((buff.duration < 0) ? 0 : buff.duration),
       roundStarted: round,
       active: buff.active
     });
