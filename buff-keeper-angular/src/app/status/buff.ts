@@ -21,6 +21,6 @@ export const SAVE_CATEGORY = [
 
 export const BONUS_TYPE = [
   'None', 'Alchemical', 'Armor', 'Circumstance', 'Competence', 'Deflection', 'Dodge',
-  'Enhancement', 'Insight', 'Luck', 'Morale', 'Profane', 'Racial', 'Resistance', 'Sacred',
+  'Enhancement', 'Insight', 'Luck', 'Morale', 'Natural', 'Profane', 'Racial', 'Resistance', 'Sacred',
   'Shield', 'Size', 'Trait'
 ];
