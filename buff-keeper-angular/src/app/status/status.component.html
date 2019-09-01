@@ -5,7 +5,9 @@
         <span *ngIf="buff.name === ''">Blank Buff<br /></span>
         <span *ngIf="buff.name !== ''">{{buff.name}}<br /></span>
         <span>
-            Attack:&nbsp;{{buff.atk.value}}&nbsp;Damage:&nbsp;{{buff.dmg.value}}&nbsp;Duration:&nbsp;{{buff.remaining}}&nbsp;
+            <span [matTooltip]="'Type: ' + buff.atk.type">Attack:&nbsp;{{buff.atk.value}}&nbsp;</span>
+            <span [matTooltip]="'Type: ' + buff.dmg.type">Damage:&nbsp;{{buff.dmg.value}}&nbsp;</span>
+            Duration:&nbsp;{{buff.remaining}}&nbsp;
             Active?&nbsp;{{buff.active}}&nbsp;
         </span>
         <button mat-button class="toggle-button" (click)="toggleEffect(i)">Toggle</button>
