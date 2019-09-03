@@ -1,10 +1,25 @@
-#container {
+.container-m {
+    padding: 25px; 
+    margin: auto;
+}
+
+@media only screen and (min-width: 768px) {
+    .container-d {
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        padding: 25px; 
+        margin: auto;
+        max-width: 50%;
+    }
+}
+
+/* #container {
     background-color: #f2f2f2;
     border-radius: 5px;
     padding: 25px; 
     margin: auto;
     max-width: 50%;
-}
+} */
 
 .round-button {
     background-color: skyblue;

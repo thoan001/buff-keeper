@@ -1,4 +1,4 @@
-<div id="container">
+<div class="container-m container-d">
     <strong>Your status:</strong><br />
     <div *ngFor="let buff of status.Buffs; let i = index">
         <br />
@@ -22,7 +22,11 @@
     </div>
 
     <div><strong>Total:&nbsp;</strong><br>
-            <span>Attack:&nbsp;{{total.atk}}&nbsp;</span><span>Damage:&nbsp;{{total.dmg}}&nbsp;</span>
+            <span>Attack:&nbsp;{{total.atk}}&nbsp;</span>
+            <span>Damage:&nbsp;{{total.dmg}}&nbsp;</span>
+            <span>Fortitude:&nbsp;{{total.fortitude}}&nbsp;</span>
+            <span>Reflex:&nbsp;{{total.reflex}}&nbsp;</span>
+            <span>Will:&nbsp;{{total.will}}</span>
             <br /><br />
             <span>Current&nbsp;Round:&nbsp;{{status.Round}}</span><br /><br />
     </div>

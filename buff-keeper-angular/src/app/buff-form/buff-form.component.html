@@ -1,26 +1,29 @@
-<div id="container">
+<div class="container-m container-d">
     <form [formGroup]="buffForm" (ngSubmit)="onSubmit()">
         <h3>Add a buff</h3>
         <br />
 
-        <div>
-            <mat-form-field appearance="fill" id="name-field">
-                <mat-label>Buff Name</mat-label>
-                <input matInput type="text" id="buff-name" formControlName="name" placeholder="Type a buff name..." />
-            </mat-form-field>
-        </div>
+        <mat-form-field appearance="fill" id="name-field">
+            <mat-label>Buff Name</mat-label>
+            <input matInput type="text" id="buff-name" formControlName="name" placeholder="Type a buff name..." />
+        </mat-form-field>
 
         <div class="row">
             <h3>Attack:&nbsp;&nbsp;</h3>
-            <mat-form-field appearance="standard" class="input-field">
-                <input matInput type="number" id="attack-field" formControlName="atk" />
-            </mat-form-field>
-            <button mat-button type="button" class="number-button" (click)="incrementValue('atk')">
-                <mat-icon>keyboard_arrow_up</mat-icon>
-            </button>
-            <button mat-button type="button" class="number-button" (click)="decrementValue('atk')">
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </button>
+        </div>
+
+        <div class="row">
+            <div class="numeric-field">
+                <mat-form-field appearance="standard" class="input">
+                    <input matInput type="number" id="attack-field" formControlName="atk" />
+                </mat-form-field>
+                <button mat-button type="button" class="number-button" (click)="incrementValue('atk')">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                </button>
+                <button mat-button type="button" class="number-button" (click)="decrementValue('atk')">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+            </div>
             <mat-form-field appearance="standard" class="dropdown">
                 <mat-label>Type</mat-label>
                 <mat-select formControlName="atkType">
@@ -31,15 +34,20 @@
 
         <div class="row">
             <h3>Damage:&nbsp;&nbsp;</h3>
-            <mat-form-field appearance="standard" class="input-field">
-                <input matInput type="number" id="damage-field" formControlName="dmg" />
-            </mat-form-field>
-            <button mat-button type="button" class="number-button" (click)="incrementValue('dmg')">
-                <mat-icon>keyboard_arrow_up</mat-icon>
-            </button>
-            <button mat-button type="button" class="number-button" (click)="decrementValue('dmg')">
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </button>
+        </div>
+
+        <div class="row">
+            <div class="numeric-field">
+                <mat-form-field appearance="standard" class="input">
+                    <input matInput type="number" id="damage-field" formControlName="dmg" />
+                </mat-form-field>
+                <button mat-button type="button" class="number-button" (click)="incrementValue('dmg')">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                </button>
+                <button mat-button type="button" class="number-button" (click)="decrementValue('dmg')">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+            </div>
 
             <mat-form-field appearance="standard" class="dropdown">
                 <mat-label>Type</mat-label>
@@ -51,19 +59,67 @@
 
         <div class="row">
             <h3>Save:&nbsp;&nbsp;</h3>
-            <mat-form-field appearance="standard" class="input-field">
-                <input matInput type="number" id="save-field" formControlName="saveVal" />
-            </mat-form-field>
-            <button mat-button type="button" class="number-button" (click)="incrementValue('saveVal')">
-                <mat-icon>keyboard_arrow_up</mat-icon>
-            </button>
-            <button mat-button type="button" class="number-button" (click)="decrementValue('saveVal')">
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </button>
+        </div>
 
-            <mat-form-field appearance="standard" class="dropdown">
-                <mat-label>Type</mat-label>
-                <mat-select formControlName="saveType">
+        <div class="save-row">
+            <div class="numeric-field">
+                <mat-form-field appearance="standard" class="input">
+                    <mat-label>Fortitude</mat-label>
+                    <input matInput type="number" formControlName="fortitude" />
+                </mat-form-field>
+                <button mat-button type="button" class="number-button" (click)="incrementValue('fortitude')">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                </button>
+                <button mat-button type="button" class="number-button" (click)="decrementValue('fortitude')">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+            </div>
+
+            <div class="numeric-field">
+                <mat-form-field appearance="standard" class="input">
+                    <mat-label>Reflex</mat-label>
+                    <input matInput type="number" formControlName="reflex" />
+                </mat-form-field>
+                <button mat-button type="button" class="number-button" (click)="incrementValue('reflex')">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                </button>
+                <button mat-button type="button" class="number-button" (click)="decrementValue('reflex')">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+            </div>
+
+            <div class="numeric-field">
+                <mat-form-field appearance="standard" class="input">
+                    <mat-label>Will</mat-label>
+                    <input matInput type="number" formControlName="will" />
+                </mat-form-field>
+                <button mat-button type="button" class="number-button" (click)="incrementValue('will')">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                </button>
+                <button mat-button type="button" class="number-button" (click)="decrementValue('will')">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+            </div>
+
+            <mat-form-field appearance="standard" class="input">
+                <mat-label>Fortitude Type</mat-label>
+                <mat-select formControlName="fortType">
+                    <mat-option *ngFor="let savebonus of BONUS_TYPE" [value]="savebonus">{{ savebonus }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard" class="input">
+                <mat-label>Reflex Type</mat-label>
+                <mat-select formControlName="reflType">
+                    <mat-option *ngFor="let savebonus of BONUS_TYPE" [value]="savebonus">{{ savebonus }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard" class="input">
+                <mat-label>Will Type</mat-label>
+                <mat-select formControlName="willType">
                     <mat-option *ngFor="let savebonus of BONUS_TYPE" [value]="savebonus">{{ savebonus }}
                     </mat-option>
                 </mat-select>
@@ -71,16 +127,21 @@
         </div>
 
         <div class="row">
-                <h3>Duration:&nbsp;&nbsp;</h3>
-            <mat-form-field appearance="standard" id="duration-field">
-                <input matInput type="number" formControlName="duration" />
-            </mat-form-field>
-            <button mat-button type="button" class="number-button" (click)="incrementValue('duration')">
-                <mat-icon>keyboard_arrow_up</mat-icon>
-            </button>
-            <button mat-button type="button" class="number-button" (click)="decrementValue('duration')">
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </button>
+            <h3>Duration:&nbsp;&nbsp;</h3>
+        </div>
+
+        <div class="row">
+            <div class="numeric-field">
+                <mat-form-field appearance="standard" id="duration-field">
+                    <input matInput type="number" formControlName="duration" />
+                </mat-form-field>
+                <button mat-button type="button" class="number-button" (click)="incrementValue('duration')">
+                    <mat-icon>keyboard_arrow_up</mat-icon>
+                </button>
+                <button mat-button type="button" class="number-button" (click)="decrementValue('duration')">
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+            </div>
         </div>
 
         <div id="bottom">

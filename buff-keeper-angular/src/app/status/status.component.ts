@@ -14,7 +14,7 @@ import { Buff, BONUS_TYPE } from './buff';
 export class StatusComponent implements OnInit {
   status$: Observable<State>;
   status: State;
-  total: { atk: number, dmg: number, save: number };
+  total: { atk: number, dmg: number, fortitude: number, reflex: number, will: number };
 
   constructor(private store: Store<State>, private router: Router) {
     this.status$ = store.pipe(select('status'));
@@ -41,7 +41,9 @@ export class StatusComponent implements OnInit {
         this.total = {
           atk: 0,
           dmg: 0,
-          save: 0
+          fortitude: 0,
+          reflex: 0,
+          will: 0
         };
       }
     });
@@ -70,7 +72,9 @@ export class StatusComponent implements OnInit {
   calculateTotal(buffList: Buff[]) {
     let totalAtk = 0;
     let totalDmg = 0;
-    let totalSave = 0;
+    let totalFort = 0;
+    let totalRefl = 0;
+    let totalWill = 0;
 
     const calculatedList: Buff[] = buffList.filter((buff) => buff.active);
 
@@ -78,7 +82,9 @@ export class StatusComponent implements OnInit {
       // Note: Negative status types will always have the 'None' type, allowing these values to safely be initialized to 0
       let maxAtk = 0;
       let maxDmg = 0;
-      let maxSave = 0;
+      let maxFort = 0;
+      let maxRefl = 0;
+      let maxWill = 0;
 
       if ((bonus === 'None') || (bonus === 'Dodge') || (bonus === 'Natural')) {
         calculatedList.map((buff) => {
@@ -88,9 +94,14 @@ export class StatusComponent implements OnInit {
           if (buff.dmg.type === bonus) {
             totalDmg += buff.dmg.value;
           }
-          // temporarily setting to array 0 for a while
-          if (buff.save[0].type === bonus) {
-            totalSave += buff.save[0].value;
+          if (buff.save.fortitude.type === bonus) {
+            totalFort += buff.save.fortitude.value;
+          }
+          if (buff.save.reflex.type === bonus) {
+            totalRefl += buff.save.reflex.value;
+          }
+          if (buff.save.will.type === bonus) {
+            totalWill += buff.save.will.value;
           }
         });
       } else {
@@ -101,19 +112,27 @@ export class StatusComponent implements OnInit {
           if ((buff.dmg.type === bonus) && (buff.dmg.value > maxDmg)) {
             maxDmg = buff.dmg.value;
           }
-          if ((buff.save[0].type === bonus) && (buff.save[0].value > maxSave)) {
-            maxSave = buff.save[0].value;
+          if ((buff.save.fortitude.type === bonus) && (buff.save.fortitude.value > maxFort)) {
+            maxFort = buff.save.fortitude.value;
+          }
+          if ((buff.save.reflex.type === bonus) && (buff.save.reflex.value > maxRefl)) {
+            maxRefl = buff.save.reflex.value;
+          }
+          if ((buff.save.will.type === bonus) && (buff.save.will.value > maxWill)) {
+            maxWill = buff.save.will.value;
           }
         }
 
         totalAtk += maxAtk;
         totalDmg += maxDmg;
-        totalSave += maxSave;
+        totalFort += maxFort;
+        totalRefl += maxRefl;
+        totalWill += maxWill;
       }
 
     }
 
-    return { atk: totalAtk, dmg: totalDmg, save: totalSave };
+    return { atk: totalAtk, dmg: totalDmg, fortitude: totalFort, reflex: totalRefl, will: totalWill };
   }
 
 }
